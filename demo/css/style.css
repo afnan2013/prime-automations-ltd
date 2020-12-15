@@ -1,0 +1,381 @@
+/* ---- reset ---- */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+}
+
+canvas {
+  display: block;
+  vertical-align: bottom;
+}
+
+/* ---- particles.js container ---- */
+
+#particles-js {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background-color: #0C2B25;
+  background-image: url("");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+}
+
+/* ---- stats.js ---- */
+/* ---- stats.js ---- */
+
+.count-particles{
+  background: transparent;
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  font-size: 32px;
+  color: white;
+  letter-spacing: 2px;
+  font-family: Helvetica, Arial, sans-serif;
+  
+}
+
+.js-particles{
+  font-size: 1.1em;
+  position: absolute;
+}
+
+#stats, .count-particles{
+  -webkit-user-select: none;
+}
+
+
+#sitelogo{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-top: -150px;
+  margin-left: -140px;  /* half of your logo size should be minus*/
+}
+
+#exploreSite { background:transparent; font-size: 40px; color: white;
+border-color: transparent; margin-top: 40px; margin-left: -82px;
+letter-spacing: 3px; font-family: Helvetica, Arial, sans-serif;}
+
+/* HEADER */
+#header-nav {
+  margin-top: 20px;
+  background-color: #ffffff;
+  border: 0px;
+  border-radius: 0px;
+}
+
+#logo-img {
+  margin: 10px 15px 10px 200px;
+}
+
+.navbar-brand {
+  padding-top: 25px;
+}
+
+.navbar-brand h1{   /* Restaurant's Name */
+  font-size: 1.9em;
+  font-family: 'Lora', serif;
+  text-transform: uppercase;
+  font-weight: bold;
+  color: #0C2B25;
+  text-shadow: 1px 1px 1px #222;
+  margin-top: 5px;
+  margin-bottom: 0;
+  line-height: .75;
+}
+
+.navbar-brand a:hover, .navbar-brand a:focus {
+  text-decoration: none;
+}
+
+.navbar-brand p {  /* Koshar Cerification Text */
+  margin-top: 15px;
+  color: #000;
+  text-transform: uppercase;
+  font-size: 0.7em;
+}
+
+.navbar-brand span {  /* Koshar Cerification Alignment */
+  vertical-align: middle;
+}
+
+.navbar-info{
+  float: right;
+  margin-right: 200px;
+  font-size: 1.2em;
+}
+
+.navbar-info .navbar-info-email{
+  float: right;
+}
+
+#info-email{
+  padding-right: 20px;
+}
+
+#nav-list {
+  margin-top: 85px;
+  font-size: 1.2em;
+  letter-spacing: 2px;
+}
+
+#nav-list a {
+  color: #004044;
+  text-align: center;
+}
+
+#nav-list a:hover {
+  background: #DBDDE0;
+}
+
+#nav-list a span {
+  font-size: 1.4em;
+}
+
+.navbar-info .navbar-info-email {
+  padding-right: 22px;
+}
+
+#phone {
+  margin-top: 5px;
+}
+
+#phone a {
+  text-align: right;
+  padding-bottom: 0px;
+}
+
+#phone div {
+  text-align: right;
+  padding-right: 15px;
+  color: #557c3e;
+}
+
+.navbar-header button.navbar-toggle, .navbar-header button.navbar-toggle span {
+  border: 1px solid #004044;
+}
+
+.navbar-header button.navbar-toggle {
+  clear: both;
+  /*background: #EBEDEF; */
+  margin-top: -30px;
+}
+
+/* END HEADER */
+
+.container-fluid {
+  padding-right: 0px;
+  padding-left: 0px;
+}
+#aboutSection {
+  opacity: 0;
+}
+#aboutSection .jumbotron {
+  box-shadow: 0 0 10px #004030;
+  background-image: url(https://mdbootstrap.com/img/Photos/Others/gradient1.jpg); 
+  height: 550px;
+}
+
+#aboutSection .jumbotron h1 {
+  margin-top: 150px;
+  color: white;
+  font-family:  Helvetica, Arial, sans-serif;
+}
+
+#brandSection .center {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content : center;
+  align-items : center;
+  flex-wrap : wrap; /* Change the logo position according to devices */
+  column-gap : 15px;
+  row-gap : 15px;
+  width: 80%;
+}
+/* Initial 5 logos in a row with 15px padding*/
+#brandSection .row .column {
+  flex-basis : calc(20% - 15px);
+}
+
+#brandSection .row .column img{
+  max-height: 140px;
+  max-width: 200px;
+}
+
+.sectionTitle { 
+  padding: 100px 20px 20px 20px; 
+  margin: 20px 10px 40px 10px;  
+  font-size: 4em;
+  font-weight: bold; 
+  font-family: 'Roboto', sans-serif; 
+  color: #145629;
+}
+
+
+#aboutSection p {
+  padding: 10px;
+  margin-bottom: 45px;
+  margin-left: 300px;
+  margin-right: 300px;
+  font-size: 1.7em;
+  color: green;
+  line-height: 40px;
+
+  font-family:  'Roboto', sans-serif;;
+}
+
+
+#productSection .container .row{
+  margin-bottom: 100px;
+}
+
+#productSection .container .row .productDetails{
+  font-size: 1.7em;
+  padding:60px;
+}
+
+#productSection .container .row #lastProductDetails{
+  padding: 50px 20px 20px 20px;
+}
+
+
+#productSection .container .row .center{
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#productSection .product-btn {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  justify-content : center;
+  align-items : center;
+  padding: 12px 35px;
+  border: 2px solid #5dc8ac;
+  border-radius: 30px;
+  font-size: 16px;
+  font-weight: 600;
+  -webkit-transition: all 0.5s linear;
+  transition: all 0.5s linear; 
+}
+
+#productSection .product-btn:hover {
+  color: white;
+  background: #5dc8ac; }
+
+#serviceSection .container .row .column {
+  text-align : center;
+  border: 2px solid #145629;
+  border-radius: 0px;
+  padding: 15px;
+  font-size: 1.7em;
+  min-height: 650px;
+}
+
+#serviceSection .container .row .column img{
+  padding: 20px;
+}
+
+#serviceSection .container .row .column h2 {
+  margin-bottom: 25px;
+}
+
+#clientSection .container .row .clientDetails{
+  font-size: 1.4em;
+  padding:30px;
+}
+
+#contactSection .row{
+  margin: 40px 0px;
+  color: #145629;
+  
+}
+
+#contactSection .row h1{
+  font-weight: bold;
+}
+
+
+#contactSection .row h2{
+  font-size: 2.4em;
+}
+
+/* FOOTER */
+.panel-footer {
+  margin-top: 30px;
+  padding-top: 35px;
+  padding-bottom: 30px;
+  background-color: #163A1A;
+  border-top: 0px; 
+  color: white;
+}
+
+.panel-footer div.row {
+  margin-bottom: 30px;
+}
+
+#emailUs{
+  padding: 40px 60px 0px 60px;
+  text-align: center;
+}
+
+#emailUs input, #emailUs textarea, #emailUs button {
+  font-size: 1.4em;
+  margin-bottom: 25px;
+}
+
+#emailUs .form-group .form-control, #sendEmailBtn {
+  border: 1px solid #145629;
+  border-radius: 15px;
+}
+
+#testimonials { 
+  margin-top: 200px;
+  padding-left: 50px;
+
+}
+
+#testimonials img{
+  padding-right: 30px;
+}
+
+#scrollUp {
+  display: none;
+  background: #000000;
+  bottom: 20px;
+  color: #ffffff;
+  font-size: 20px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  position: fixed;
+  right: 20px;
+  text-align: center;
+  text-decoration: none;
+  -webkit-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+  z-index: 1000;
+  border-radius: 5px; }
+  #scrollUp:hover {
+    background: #ffffff; ;
+    color: #163A1A; }
+ 
+/* END FOOTER */
+
+/********** Large devices only **********/
+@media (min-width: 1200px) {
+
+  #serviceSection .container, #contactSection .container, .panel-footer .container{
+    width: 1300px;
+  }
+  
+}

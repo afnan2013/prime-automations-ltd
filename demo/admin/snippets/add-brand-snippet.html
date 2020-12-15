@@ -1,0 +1,28 @@
+  <section id="brandSection">
+    <div class="container">
+        <h2>Brand Settings</h2>
+        <button class="btn btn-lg add-icon" title="Add More Brand" onclick="$pal.addMoreBrand();">
+            <i class="fa fa-plus"></i> 
+        </button>
+        <form id="brand_add_form">
+          <div class="form-group">
+            <label for="exampleInputBrandName1">Brand Title</label>
+            <input type="text" class="form-control" id="exampleInputBrandName1" name="brandName" required>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputDescription1">Brand Description</label>
+            <textarea name="brandDesc" rows="6" class="form-control" name="brandDesc" id="exampleInputTextArea1" placeholder="Enter Description" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputBrandLink1">Brand Website Link</label>
+            <input type="text" class="form-control" id="exampleInputBrandName1" name="brandLink" required>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlFile1">Brand Image</label>
+            <input type="file" name="images" class="form-control-file" name="brandImage" id="inputFile" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    
+  </section>

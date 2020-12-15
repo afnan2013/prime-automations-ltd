@@ -1,0 +1,30 @@
+
+  
+  <section id="productSection">
+    <div class="container">
+        <h2>Product Settings</h2>
+        <button class="btn btn-lg add-icon" title="Add More Product" onclick="$pal.addMoreProduct();">
+            <i class="fa fa-plus"></i> 
+        </button>
+        <form id="product_add_form">
+          <div class="form-group">
+            <label for="exampleInputProductName1">Product Title</label>
+            <input type="text" class="form-control" id="exampleInputProductName1" name="productName" required>
+          </div>
+          <div class="form-group">
+            <label for="exampleInputDescription1">Product Description</label>
+            <textarea name="productDesc" rows="6" class="form-control" name="productDesc" id="exampleInputTextArea1" placeholder="Enter Description" required></textarea>
+          </div>
+          <div class="form-group">
+            <label for="exampleFormControlFile1">Product Image</label>
+            <input type="file" name="images" class="form-control-file" name="productImage" id="inputFile" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+    
+  </section>
+
+  
+
+
