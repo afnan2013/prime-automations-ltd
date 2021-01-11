@@ -411,7 +411,7 @@ canvas {
 
 
   #logo-canvas {
-    background: url('../images/logo-middle-medium.PNG') no-repeat;
+    background: url('../images/logo-middle-medium.png') no-repeat;
     height: 130px;
     width: 130px;
   }
@@ -426,7 +426,7 @@ canvas {
 @media (max-width: 767px ) {
 
   #logo-canvas {
-    background: url('../images/logo-middle-small.PNG') no-repeat;
+    background: url('../images/logo-middle-small.png') no-repeat;
     height: 100px;
     width: 100px;
   }
