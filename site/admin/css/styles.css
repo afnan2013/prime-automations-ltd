@@ -1,0 +1,41 @@
+
+.login-logo a img {
+	width: 50%;
+}
+
+.logo a img {
+	width: 70%;
+}
+
+a.logo img {
+	width: 40%;
+}
+
+.card img {
+	height: 250px;
+}
+
+#productListSection .row{
+  margin-top: 25px;
+  clear: both;
+} 
+
+#sliderListSection .row{
+  margin-top: 25px;
+  clear: both;
+} 
+
+#productSection .add-icon, #brandSection .add-icon, #sliderSection .add-icon {
+  background-color:transparent;
+  font-size:30px;
+  float: right;
+  cursor: pointer;
+}
+
+#productSection form, #brandSection form, #sliderSection form{
+	clear:both;
+}
+
+.slide-div, .product-div, .update_div, #product_add_form, #brand_add_form, #slider_image_add_form, #product_update_form {
+  display: none;
+}

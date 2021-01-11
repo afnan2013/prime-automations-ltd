@@ -1,8 +1,46 @@
-var scroll = document.getElementById("scrollUp");
+$("#exploreSite").click(function() {
+    $("#main-site").css("display", "block");
+    $('html, body').animate({
+        scrollTop: $("#header-nav").offset().top
+    }, 800);
 
-scroll.addEventListener('click', (e) => { // scroll to top
+});
+
+$("#navAboutButton").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#aboutSection").offset().top
+    }, 800);
+});
+
+$("#navBrandButton").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#brandSection").offset().top
+    }, 800);
+});
+
+$("#navProductButton").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#productSection").offset().top
+    }, 800);
+});
+
+$("#navServiceButton").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#serviceSection").offset().top
+    }, 800);
+});
+
+$("#navContactButton").click(function() {
+    $('html, body').animate({
+        scrollTop: $("#contactSection").offset().top
+    }, 800);
+});
+
+// function for scrolling all the way up
+var scroll_Top = document.getElementById("scrollUp");
+scroll_Top.addEventListener('click', (e) => { // scroll to top
     e.preventDefault();
-    $('html, body').animate({scrollTop:0}, 'slow');
+    $('html, body').animate({scrollTop: $("#header-nav").offset().top}, 'slow');
         return false;
 });
 
@@ -146,6 +184,7 @@ db.collection('clients').onSnapshot((snapshot) => {
 });
 
 // Add animation in different section
+//const canvas = document.querySelector("#canvas-site");
 const particles = document.querySelector("#particles-js");
 const tittle = document.querySelector("#company_tittle");
 const logoImage = document.querySelector("#sitelogo");
@@ -153,7 +192,7 @@ const siteText = document.querySelector("#exploreSite");
 const about = document.querySelector("#aboutSection");
 const brand = document.querySelector("#brandSection");
 const client = document.querySelector("#clientSection");
-
+//document.getElementById("canvas-site").style.display = "block";
 // object of animation script
 const t1 = new TimelineMax();
 
@@ -166,16 +205,16 @@ t1.fromTo(particles, 1, { x:"-90%" }, { x: "0%", ease: Power2.easeInOut })
 scrolledDown = false;
 $(window).scroll(function () {
 
-    // scrollUp Button appare, after some scrolling
+    // scrollUp Button appear, after some scrolling
     var current = $(this).scrollTop();
-    if(current > 250) {
+    if(current > 1000) {
         document.getElementById("scrollUp").style.display = "block";
     } else {
         document.getElementById("scrollUp").style.display = "none";
     }
 
     // when about section is on view
-    if ($(this).scrollTop() >= (about.offsetWidth-250) && !scrolledDown) {
+    if ($(this).scrollTop() >= (about.offsetWidth-500) && !scrolledDown) {
         t1.fromTo(about, 1.2, { y:"45%", opacity: 0 }, { y: "0%", opacity: 1 });
         scrolledDown = true;
     }

@@ -116,7 +116,7 @@
 
 })(jQuery);
 
-
+  // -------------------------------------------------------------------------------------------------------------------------------
 //************** all the EventListener of This Admin Panel Is written here
 (function (global){
 
@@ -125,11 +125,19 @@
   //********************************************//
   // pal means Prime Automation Ltd
   var pal = {};
+
   var addProductHtml = "snippets/add-product-snippet.html";
   var allProductListHtml = "snippets/product-list-snippet.html";
+  var updateProductHtml = "snippets/update-product-snippet.html";
 
   var addBrandHtml = "snippets/add-brand-snippet.html";
   var allBrandListHtml = "snippets/brand-list-snippet.html";
+
+  var aboutHtml = "snippets/about-snippet.html";
+  var addSliderImagesHtml = "snippets/add-slider-image-snippet.html";
+  var allSliderImageListHtml = "snippets/slider-image-list-snippet.html";
+ 
+  var dashboardHtml = "snippets/dashboard-snippet.html"; 
 
   // Convenience function for inserting innerHTML for 'select'
   function insertHtml(selector, html) {
@@ -152,7 +160,192 @@
     return string;
   }
 
+  // -------------------------------------------------------------------------------------------------------------------------------
+  // *******************************************//
+  //          Dashboard Section JS Starts               
+  //********************************************//
+  //**** Loading the Dashboad Section Starts ***** 
+  pal.loadDashboardSection = () => {
+    // On first load, show loader view
+    showLoader("#main-content");
+    // Load dashboard snippet
+    $ajaxUtils.sendGetRequest(dashboardHtml, function (response){
+      //Real-Time Data from firebase db => put settings data in all input fields
+      db.collection('settings').onSnapshot((snapshot) => {
+        // inserting the dashboard full template before updating values  
+        insertHtml("#main-content", response);
+        snapshot.docs.forEach(doc => {
+          var title_input = document.getElementById("settings_title");
+          var banner_input = document.getElementById("settings_bannerText");
+          var address_input = document.getElementById("settings_address");
+          var fulladdress_input = document.getElementById("settings_fullAddress");
+          var email_input = document.getElementById("settings_email");
+          var mobile_input = document.getElementById("settings_mobile");
+          var copyright_input = document.getElementById("settings_copyright");
+      
+          title_input.value = doc.data().title;
+          banner_input.value = doc.data().banner;
+          address_input.value = doc.data().address;
+          fulladdress_input.value = doc.data().fullAddress;
+          email_input.value = doc.data().email;
+          mobile_input.value = doc.data().mobile;
+          copyright_input.value = doc.data().copyright;
+          updateSettings(doc.id);
+          });
+      });
+      
+    }, false);
 
+    // function to update the about section textArea to firebase Db
+    function updateSettings(id){
+      const updateSettingsForm = document.querySelector("#update_settings_form");
+      // Event for submiting the Add Product Form
+      updateSettingsForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        if (confirm("Are you sure to update?")) {
+          //console.log(inputImage.name);
+          db.collection("settings").doc(id).update({ 
+            title: updateSettingsForm['title'].value,
+            banner: updateSettingsForm['bannerText'].value,
+            address: updateSettingsForm['address'].value,
+            fullAddress: updateSettingsForm['fullAddress'].value,
+            email: updateSettingsForm['email'].value,
+            mobile: updateSettingsForm['mobile'].value,
+            copyright: updateSettingsForm['copyright'].value,
+          }).then(function () {
+            //alert("Yeah Updated!!");
+          }).catch(function (error) {
+            console.log('Update failed: ' + error.message);
+          });
+        }
+      });
+    }
+  };
+  // *******************************************//
+  //          Dashboard Section JS Ends               
+  //********************************************//
+  // -------------------------------------------------------------------------------------------------------------------------------
+  // *******************************************//
+  //          About Section JS Starts               
+  //********************************************//
+  //**** Loading the About Section Starts ***** 
+  pal.loadAboutSection = () => {
+    // On first load, show loader view
+    showLoader("#main-content");
+    // Load about snippet
+    $ajaxUtils.sendGetRequest(aboutHtml, buildAndShowAboutHTML , false);
+  };
+
+  function buildAndShowAboutHTML(aboutHtmlRes){
+
+    $ajaxUtils.sendGetRequest(addSliderImagesHtml, function (addSliderImagesHtmlRes) {
+      // Real-Time Data => retreiving about from firebase and store it in textArea
+      db.collection('settings').onSnapshot((settings_snapshot) => {
+
+        $ajaxUtils.sendGetRequest(allSliderImageListHtml, function (allSliderImageListHtmlRes) {
+
+          db.collection('slider-images').orderBy('serial').onSnapshot((snapshot) => {
+            var aboutAndSliderImageListViewHtml = buildAboutAndSliderImageListViewHtml(snapshot, aboutHtmlRes, addSliderImagesHtmlRes, allSliderImageListHtmlRes);
+
+            insertHtml("#main-content", aboutAndSliderImageListViewHtml);
+            settings_snapshot.docs.forEach(doc => {
+              var aboutTextArea = document.getElementById("aboutSectionTextArea");
+              aboutTextArea.value = doc.data().about;
+              updateAboutText(doc.id);
+            });
+          });
+        }, false);
+      });
+    } , false);
+  }
+
+  function buildAboutAndSliderImageListViewHtml(snapshot, aboutHtmlRes, addSliderImagesHtmlRes, allSliderImageListHtmlRes){
+    var finalHtml = aboutHtmlRes + addSliderImagesHtmlRes;
+    finalHtml += '<div id="sliderListSection" class="container"><section class="row">';
+
+    snapshot.docs.forEach(doc => {
+      //console.log(doc.data().name);
+      //if (snap.type == 'added'){
+        var html = allSliderImageListHtmlRes;
+        //console.log(snap.doc.data().imageUrl);
+        html = insertProperty(html, "name", doc.data().name);
+        html = insertProperty(html, "imageUrl", doc.data().imageUrl); 
+        html = insertProperty(html, "imageId", doc.id);
+      //}
+      console.log(html);
+      finalHtml += html;
+    });
+
+    finalHtml += '</section></div>';
+
+    return finalHtml;
+  }
+  //**** Loading the about Section Ends ***** 
+
+  // function to update the about section textArea to firebase Db
+  function updateAboutText(id){
+    const updateAboutTextForm = document.querySelector("#update_about_texarea_form");
+    // Event for submiting the Add Product Form
+    updateAboutTextForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (confirm("Are you sure to update?")) {
+        const aboutSectionTextArea = updateAboutTextForm['aboutSectionTextArea'].value;
+        //console.log(inputImage.name);
+        db.collection("settings").doc(id).update({ 
+          about: aboutSectionTextArea,
+        }).then(function () {
+          //alert("Yeah Updated!!");
+        }).catch(function (error) {
+          console.log('Update failed: ' + error.message);
+        });
+      }
+    });
+  }
+  
+
+  // Addition of a product to the FireBase FireStore and Stores the image in the Storage
+  pal.addMoreSliderImage = () => {
+    document.getElementById("slider_image_add_form").style.display = "block";
+    const sliderImageAddForm = document.querySelector("#slider_image_add_form");
+
+    // Event for submiting the Add Product Form
+    sliderImageAddForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const imageName = sliderImageAddForm['imageNameSlider'].value;
+      const imageStatus = sliderImageAddForm['imageStatusSlider'].value;
+      const imageSerial = sliderImageAddForm['imageSerialSlider'].value;
+      const inputImage = document.getElementById('inputFileSlider').files[0];
+
+      const fileName = new Date() + "-"+ inputImage.name; 
+      console.log(inputImage.name);
+
+      const metaData = {
+        contentType: inputImage.type
+      }
+
+      storage.child(fileName).put(inputImage, metaData)
+        .then(snapshot => snapshot.ref.getDownloadURL())
+        .then(url => {
+          //console.log(url);
+          db.collection('slider-images').add({
+            name: imageName,
+            status: imageStatus,
+            serial: imageSerial,
+            imageUrl: url
+          }).then(() => {
+            sliderImageAddForm.reset();
+            document.getElementById("slider_image_add_form").style.display = "none";
+            //alert("Image Upload Successful");
+          });
+          
+        });
+    });
+  };
+
+  // *******************************************//
+  //          About Section JS Ends               
+  //********************************************//
+  // -------------------------------------------------------------------------------------------------------------------------------
   // *******************************************//
   //          Product Section JS Starts               
   //********************************************//
@@ -174,17 +367,19 @@
       $ajaxUtils.sendGetRequest(allProductListHtml, 
         function (allProductListHtmlRes) {
           // Switch CSS class active to menu button
-          //switchMenuToActive();
-          var productListViewHtml = buildProductListViewHtml(snapshot, addProductHtmlRes, allProductListHtmlRes);
-          insertHtml("#main-content", productListViewHtml);
+          //switchMenuToActive(); updateProductHtml
+          $ajaxUtils.sendGetRequest(updateProductHtml, function(updateProductHtmlRes) {
+            var productListViewHtml = buildProductListViewHtml(snapshot, addProductHtmlRes, allProductListHtmlRes, updateProductHtmlRes);
+            insertHtml("#main-content", productListViewHtml);
+          }, false);
           
       }, false);
     });
   }
 
-  function buildProductListViewHtml(snapshot, addProductHtmlRes, allProductListHtmlRes){
+  function buildProductListViewHtml(snapshot, addProductHtmlRes, allProductListHtmlRes, updateProductHtmlRes){
     var finalHtml = addProductHtmlRes;
-    finalHtml += '<div class="container"><section class="row">';
+    finalHtml += '<div id="productListSection" class="container"><section class="row">';
     
     snapshot.docs.forEach(doc => {
       console.log(doc.id);
@@ -199,6 +394,7 @@
     });
 
     finalHtml += '</section></div>';
+    finalHtml+= updateProductHtmlRes;
 
     return finalHtml;
   }
@@ -242,14 +438,54 @@
     });
   };
 
+  // Update of a product to the FireBase FireStore and Stores the image in the Storage
+  pal.updateProduct = (id) => {
+    document.getElementById("product_update_form").style.display = "block";
+    const productUpdateForm = document.querySelector("#product_update_form");
+    window.scrollTo(0,document.body.scrollHeight);
+    var imageName = document.getElementById("updateProductName");
+    var imageDesc = document.getElementById("updateProductDesc");
+
+  
+    // show value of description and image in input field
+    db.collection('products').doc(id).get().then((doc) => {
+      
+      imageName.value = doc.data().name;
+      imageDesc.value = doc.data().description;
+      
+    });
+
+
+    // Event for submiting the Add Product Form
+    productUpdateForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (confirm("Are you sure to update?")) {
+        //console.log(inputImage.name);
+        db.collection("products").doc(id).update({ 
+          name: productUpdateForm['updateProductName'].value,
+          description: productUpdateForm['updateProductDesc'].value
+
+        }).then(function () {
+          document.getElementById("product_update_form").style.display = "none";
+          //alert("Yeah Updated!!");
+        }).catch(function (error) {
+          console.log('Update failed: ' + error.message);
+        });
+      }
+
+    });
+  };
+
   pal.deleteProduct = (productId) => {
-    db.collection('products').doc(productId).delete();
+    if (confirm("Are you sure to update?")) {
+      db.collection('products').doc(productId).delete();
+    }
   };
 
   // *******************************************//
   //          Product Section JS Ends               
   //********************************************//
-
+  // -------------------------------------------------------------------------------------------------------------------------------
 
   // *******************************************//
   //          Brand Section JS Starts               
@@ -343,14 +579,26 @@
   };
 
   pal.deleteBrand = (brandId) => {
-    db.collection('brands').doc(brandId).delete();
+    if (confirm("Are you sure to update?")) {
+      db.collection('brands').doc(brandId).delete();
+    }
   };
 
   // *******************************************//
   //          Brand Section JS Ends               
   //********************************************//
+  // -------------------------------------------------------------------------------------------------------------------------------
+  // *******************************************//
+  //          Servic Section JS Starts               
+  //********************************************//
+  pal.loadServicesSection = () => {
 
+  };
+  // *******************************************//
+  //          Brand Section JS Ends               
+  //********************************************//
 
+  // -------------------------------------------------------------------------------------------------------------------------------
   // load Account Wrapper in the Header section 
   pal.loadAccountWrap = (user) => {
     const cardAccount = document.querySelector('#card-account');
@@ -395,6 +643,7 @@
               if (doc.exists) {
                   //console.log("Document data:", doc.data());
                   pal.loadAccountWrap(doc.data());
+                  pal.loadDashboardSection();
               } else {
                   // doc.data() will be undefined in this case
                   console.log("No such document!");

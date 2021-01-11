@@ -17,8 +17,8 @@ canvas {
 
 #particles-js {
   position: relative;
-  width: 100%;
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
   background-color: #0C2B25;
   background-image: url("");
   background-repeat: no-repeat;
@@ -55,13 +55,28 @@ canvas {
   position: absolute;
   top: 50%;
   left: 50%;
-  margin-top: -150px;
-  margin-left: -140px;  /* half of your logo size should be minus*/
+  margin-top: -82.5px;
+  display: block;
+  margin-left: -82.5px;  /* half of your logo size should be minus*/
 }
 
-#exploreSite { background:transparent; font-size: 40px; color: white;
-border-color: transparent; margin-top: 40px; margin-left: -82px;
-letter-spacing: 3px; font-family: Helvetica, Arial, sans-serif;}
+#logo-canvas {
+  background: url('../images/logo-middle.PNG') no-repeat;
+  height: 165px;
+  width: 165px;
+  margin: 10px 17px 17px 30px;
+}
+
+#exploreSite { 
+  background:transparent; 
+  font-size: 40px; 
+  color: white;
+  border-color: transparent; 
+  margin-top: 70px; 
+  margin-left: -130px;
+  margin-right: auto;
+  letter-spacing: 3px; 
+  font-family: Helvetica, Arial, sans-serif;}
 
 /* HEADER */
 #header-nav {
@@ -176,11 +191,6 @@ letter-spacing: 3px; font-family: Helvetica, Arial, sans-serif;}
 }
 #aboutSection {
   opacity: 0;
-}
-#aboutSection .jumbotron {
-  box-shadow: 0 0 10px #004030;
-  background-image: url(https://mdbootstrap.com/img/Photos/Others/gradient1.jpg); 
-  height: 550px;
 }
 
 #aboutSection .jumbotron h1 {
@@ -378,4 +388,71 @@ letter-spacing: 3px; font-family: Helvetica, Arial, sans-serif;}
     width: 1300px;
   }
   
+}
+
+
+/********** Mediam devices only **********/
+@media (min-width: 992px) and (max-width: 1199px) {
+  /* HEADER PAGE */
+  #logo-canvas {
+    background: url('../images/logo-middle-medium.PNG') no-repeat;
+    height: 130px;
+    width: 130px;
+  }
+
+  #exploreSite {
+    font-size: 35px;
+  }
+  
+}
+
+/********** Small devices only **********/
+@media (min-width: 768px) and (max-width: 991px) {
+
+
+  #logo-canvas {
+    background: url('../images/logo-middle-medium.PNG') no-repeat;
+    height: 130px;
+    width: 130px;
+  }
+  
+  #exploreSite {
+    font-size: 33px;
+  }
+  
+}
+
+/********** Extra Small devices only **********/
+@media (max-width: 767px ) {
+
+  #logo-canvas {
+    background: url('../images/logo-middle-small.PNG') no-repeat;
+    height: 100px;
+    width: 100px;
+  }
+
+  .count-particles {
+    font-size: 28px;
+  }
+
+  #exploreSite {
+    font-size: 30px;
+    margin-left: -120px;
+  }
+
+}
+
+
+
+/********** Super extra small devices Only :-) (e.g., iPhone 4) **********/
+@media (max-width: 479px) {
+
+  .count-particles {
+    font-size: 25px;
+  }
+  
+  #exploreSite {
+    font-size: 25px;
+    margin-left: -95px;
+  }
 }

@@ -1,0 +1,30 @@
+  <section id="sliderSection">
+    <div class="container">
+        <h2>Slider Settings</h2>
+        <button class="btn btn-lg add-icon" title="Add More Slider Images" onclick="$pal.addMoreSliderImage();">
+            <i class="fa fa-plus"></i> 
+        </button>
+        <form id="slider_image_add_form">
+          <div class="form-group">
+            <label for="imageNameSlider">Image Title</label>
+            <input type="text" class="form-control" id="imageNameSlider" name="imageNameSlider" required> 
+          </div>
+          <div class="form-group">
+            <label for="imageStatusSlider">Status</label>
+            <select id="imageStatusSlider" name="imageStatusSlider" class="form-control">
+              <option selected>true</option>
+              <option>false</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label for="imageSerialSlider">Image Serial</label>
+            <input type="mumber" class="form-control" id="imageSerialSlider" name="imageSerialSlider" required> 
+          </div>
+          <div class="form-group">
+            <label for="inputFileSlider">Product Image</label>
+            <input type="file" class="form-control-file" name="inputFileSlider" id="inputFileSlider" required>
+          </div>
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>
+  </section>
