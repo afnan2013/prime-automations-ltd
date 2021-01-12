@@ -95,19 +95,19 @@ canvas {
 }
 
 .navbar-brand {
-  padding-top: 25px;
+  padding-top: 0px;
 }
 
 .navbar-brand h1{   /* Restaurant's Name */
   font-size: 1.9em;
-  font-family: 'Lora', serif;
-  text-transform: uppercase;
-  font-weight: bold;
-  color: #0C2B25;
-  text-shadow: 1px 1px 1px #222;
+  font-family: Helvetica, Arial, sans-serif;
+  /*font-weight: bold;*/
+  color: #FFF;
+  text-shadow: 1px 1px 1px #141414;
   margin-top: 5px;
   margin-bottom: 0;
   line-height: .75;
+  letter-spacing: 2px;
 }
 
 .navbar-brand a:hover, .navbar-brand a:focus {
@@ -178,7 +178,7 @@ canvas {
 }
 
 .navbar-header button.navbar-toggle, .navbar-header button.navbar-toggle span {
-  border: 1px solid #004044;
+  border: 1px solid #fff;
 }
 
 .navbar-header button.navbar-toggle {
@@ -494,11 +494,10 @@ canvas {
   }
 
   
-}
-
-
   
 }
+
+
 
 /********** Extra Small devices only **********/
 @media (max-width: 767px ) {
@@ -524,8 +523,59 @@ canvas {
     margin-left: -120px;
   }
 
+  #header-nav{
+    margin: 0px 0px;
+    padding-left: 15px; 
+    padding-right: 15px; 
+    background-color: #004044;
+  }
+
+  .navbar-info {
+    float: none;
+    margin-right: 0px;
+    font-size: 1.1em;
+  }
+
+  #nav-list {
+    margin-top: 0px;
+    font-size: 1.1em;
+    letter-spacing: 1.5px;
+  }
+
+  #nav-list a {
+    color: #FFF;
+    text-align: center;
+  }
+
+  #nav-list a:hover {
+    color: #004044;
+  }
+  
+  #nav-list .active a {
+    color: #004044;
+  }
   
 
+  .navbar-brand {
+    padding-top: 10px;
+    height: 80px; 
+  }
+
+  .navbar-brand h1{   /* Restaurant's Name */
+
+    padding-top: 10px;
+    font-size: 5vw;   /* 1 vm = 1% of the Viewdevice width and its responsive */
+  }
+
+  #call-btn > a {
+    font-size: 1.5em;
+    display: block;
+    background-color: #f6b319;
+    border: 2px solid #fff;
+    color: #004044;
+    margin: 0px 20px;
+    padding: 10px;
+  }
 }
 
 
