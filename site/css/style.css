@@ -235,15 +235,17 @@ canvas {
 
 
 #aboutSection p {
+  width: 1190px;
   padding: 10px;
   margin-bottom: 45px;
-  margin-left: 300px;
-  margin-right: 300px;
+  margin-left: auto;
+  margin-right: auto;
+  /* margin-right: 300px; */
   font-size: 1.7em;
   color: green;
   line-height: 40px;
-
-  font-family:  'Roboto', sans-serif;;
+  font-family: Roboto, sans-serif;
+  text-align: justify;
 }
 
 
@@ -446,7 +448,13 @@ canvas {
     font-size: 1.1em;
   }
 
+  #aboutSection p {
+    width: 970px;
+  }
 
+  .container iframe {
+    height: 450px;
+  }
 }
 
 /********** Small devices only **********/
@@ -493,8 +501,13 @@ canvas {
     letter-spacing: 1px;
   }
 
+  #aboutSection p {
+    width: 750px;
+  }
   
-  
+  .container iframe {
+    height: 350px;
+  }
 }
 
 
@@ -575,6 +588,27 @@ canvas {
     color: #004044;
     margin: 0px 20px;
     padding: 10px;
+  }
+
+  .sectionTitle { 
+    padding: 0px;
+    margin: 70px 10px 35px 10px;  
+    font-size: 6vw;
+    letter-spacing: 1.5px;
+
+        
+  }
+
+  #aboutSection p {
+    width: auto;
+    padding: 0px 30px;
+    font-size: 3.2vw;
+    letter-spacing: 1px;
+    line-height: 3.5vw;
+  }
+
+  .container iframe {
+    height: 280px;
   }
 }
 
