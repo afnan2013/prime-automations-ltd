@@ -6,6 +6,7 @@
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
+  overflow-x: hidden; 
 }
 
 canvas {
@@ -87,7 +88,10 @@ canvas {
 }
 
 #logo-img {
+  background: url('../images/nav-bar-logo-large.png') no-repeat;
   margin: 10px 15px 10px 200px;
+  width: 300px;
+  height: 140px;
 }
 
 .navbar-brand {
@@ -155,7 +159,7 @@ canvas {
 }
 
 .navbar-info .navbar-info-email {
-  padding-right: 22px;
+  padding-right: 18px;
 }
 
 #phone {
@@ -387,9 +391,30 @@ canvas {
   #serviceSection .container, #contactSection .container, .panel-footer .container{
     width: 1300px;
   }
+
+
   
 }
 
+/********** Mediam- Large devices only **********/
+@media (min-width: 1200px) and (max-width: 1500px) {
+  /* HEADER PAGE */
+  
+  #logo-img {
+    margin: 10px 15px 10px 100px;
+  }
+
+  #nav-list {
+    font-size: 1.1em;
+    letter-spacing: 1.2px;
+  }
+
+  .navbar-info {
+    margin-right: 80px;
+  }
+  
+  
+}
 
 /********** Mediam devices only **********/
 @media (min-width: 992px) and (max-width: 1199px) {
@@ -400,10 +425,28 @@ canvas {
     width: 130px;
   }
 
+  #nav-list {
+    font-size: 1em;
+    letter-spacing: 1px;
+  }
+
   #exploreSite {
     font-size: 35px;
   }
+
+  #logo-img {
+    background: url('../images/nav-bar-logo-medium.png') no-repeat;
+    margin: 25px 15px 10px 50px;
+    width: 260px;
+    height: 121px;
+  }
   
+  .navbar-info {
+    margin-right: 40px;
+    font-size: 1.1em;
+  }
+
+
 }
 
 /********** Small devices only **********/
@@ -419,6 +462,40 @@ canvas {
   #exploreSite {
     font-size: 33px;
   }
+
+  .navbar-info-email {
+      /* padding-right: 18px; */
+    text-align: right;
+    padding-right: 18px;
+  }
+
+  .navbar-info {
+    clear: both;
+    margin-right: 0px;
+    font-size: 1.1em;
+  }
+
+  #logo-img {
+    background: url(../images/nav-bar-logo-small.png) no-repeat;
+    margin: 10px 15px 10px 15px;
+    width: 225px;
+    height: 104px;
+  }
+
+  #info-email {
+    padding-right: 0px;
+  }
+
+  #nav-list {
+    margin-top: 0px;
+    font-size: 1.0em;
+    letter-spacing: 1px;
+  }
+
+  
+}
+
+
   
 }
 
@@ -445,6 +522,8 @@ canvas {
     font-size: 30px;
     margin-left: -120px;
   }
+
+  
 
 }
 

@@ -62,7 +62,7 @@ db.collection('settings').onSnapshot((snapshot) => {
         // Show Email and Mobile in a Div from firestore
         var email_text = doc.data().email;
         var mobile_text = doc.data().mobile;
-        $("#email_mobile_div").append('<span id="info-email">'+email_text+'</span> <a href="'
+        $("#email_mobile_div").append('<span id="info-email">'+email_text+'</span><br class="visible-sm"> <a href="'
                                         + mobile_text +'"><span>'+ mobile_text +'</span></a>');
 
         // Show About data from firestore
