@@ -608,6 +608,11 @@ canvas {
   .container iframe {
     height: 280px;
   }
+
+  #brandSection .row .column img {
+    /*max-height: 140px;*/
+    max-width: 150px;
+  }
 }
 
 
@@ -641,5 +646,9 @@ canvas {
 
   .container iframe {
     height: 200px;
+  }
+
+  #brandSection .row .column img {
+    max-width: 100px;
   }
 }

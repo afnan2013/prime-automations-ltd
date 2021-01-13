@@ -65,6 +65,7 @@ db.collection('settings').onSnapshot((snapshot) => {
         $("#email_mobile_div").append('<span id="info-email">'+email_text+'</span><br class="visible-sm"> <a href="'
                                         + mobile_text +'"><span>'+ mobile_text +'</span></a>');
 
+        $("#call-btn").append('<a class="btn" href="tel:'+mobile_text+'"><span class="glyphicon glyphicon-earphone"></span>'+mobile_text+'</a>');
         // Show About data from firestore
         $("#aboutParagraph").append(doc.data().about);
 
@@ -125,7 +126,7 @@ db.collection('brands').orderBy('image').onSnapshot((snapshot) => {
 
        var brand = '<div class="column">'
                        + '<img src="images/' 
-                       + doc.data().image + '" alt="Picture of Restaurent"></div>';
+                       + doc.data().image + '" class="img-responsive" alt="Picture of Restaurent"></div>';
 
        $("#brandLogo").append(brand);
         
