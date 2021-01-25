@@ -727,10 +727,14 @@ canvas {
   }
 
   #brandSection .row .column img {
-    max-width: 85px;
+    max-width: 100px;
   }
 
   #productSection .container .row .productDetails {
-      font-size: 4vw;
+      font-size: 4.5vw;
+  }
+
+  #productSection .productImage {
+      padding: 20px 30px;
   }
 }
