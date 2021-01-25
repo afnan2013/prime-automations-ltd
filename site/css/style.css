@@ -330,6 +330,12 @@ canvas {
   margin-bottom: 25px;
 }
 
+#serviceSection .container .row .column p {
+    text-align: justify;
+    padding: 0px 10px;
+    /*font-size: 5vw;*/
+  }
+
 #clientSection .container .row .clientDetails{
   font-size: 1.4em;
   padding:30px;
@@ -572,6 +578,8 @@ canvas {
       /* text-align: justify; */
   }
 
+  
+
 
 }
 
@@ -705,8 +713,12 @@ canvas {
     margin: 30px 100px;
   }
 
+  #serviceSection .container .row .column {
+    min-height: 0px;
+  }
+
   #serviceSection .container .row .column img {
-    padding: 0px 70px;
+    padding: 0px 30px;
   }
 }
 
@@ -759,15 +771,28 @@ canvas {
     margin: 30px 100px;
   }
 
+  #serviceSection .container .row .column {
+    min-height: 0px;
+  }
+
   #serviceSection .container .row .column img {
     padding: 0px 70px;
   }
 
   #serviceSection .container .row {
-    margin: 20px 50px;
+    margin: 20px 20px;
   }
 
   #serviceSection .container .row .column img {
-    padding: 0px 40px;
+    padding: 0px 30px;
+  }
+
+  #serviceSection .container .row h2 {
+    margin-bottom: 25px;
+    font-size: 6vw;
+  }
+
+  #serviceSection .container .row p {
+    font-size: 5vw;
   }
 }
