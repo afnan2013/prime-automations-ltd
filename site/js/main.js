@@ -70,7 +70,7 @@ db.collection('settings').onSnapshot((snapshot) => {
         $("#aboutParagraph").append(doc.data().about);
 
         // Show Video in iframe from firestore
-        $("#video_div").append('<iframe width="100%" height="550px" src="'+doc.data().video
+        $("#aboutVideo").append('<iframe width="100%" height="550px" src="'+doc.data().video
         + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;'
         + 'gyroscope; picture-in-picture" allowfullscreen></iframe>');
 
@@ -139,23 +139,33 @@ db.collection('products').orderBy('image').onSnapshot((snapshot) => {
     //insertHtml("#main-content", response);
     snapshot.docs.forEach(doc => {
 
-    var isOdd = number % 2 == 1;
-    var desp = doc.data().description;
-    var image = doc.data().image;
-    var imageString = '<div class="col-md-6 col-sm-6">'
-                    + '<img src="images/' + image + '">'
-                    + '</div>';
-    var despString = '<div class="col-md-6 col-sm-6 productDetails">'
-                    + '<p>' + desp + '</p>'
-                    + '</div>';
-    var image_and_desp_string =       
-   '<div class="row">'
-     + (isOdd ? despString : imageString)  //show value first image then description
-     + (isOdd ? imageString : despString)   //show value first description then image
-     + '</div>';
+        var isOdd = number % 2 == 1;
+        var desp = doc.data().description;
+        var image = doc.data().image;
+        var imageString = '<div class="col-md-6 col-sm-6 col-xs-12 productImage">'
+                        + '<img src="images/' + image + '">'
+                        + '</div>';
+        var despString = '<div class="col-md-6 col-sm-6 col-xs-12 productDetails">'
+                        + '<p>' + desp + '</p>'
+                        + '</div>';
 
-    $("#product_div").append(image_and_desp_string);
-    number = number + 1; // to get different combination of image and description
+        var image_and_desp_string = "";
+        if (window.innerWidth > 766){
+             image_and_desp_string =       
+            '<div class="row">'
+             + (isOdd ? despString : imageString)   //show value first image then description
+             + (isOdd ? imageString : despString)   //show value first description then image
+             + '</div>';
+        }
+        else{
+            image_and_desp_string =       
+            '<div class="row">'
+             +imageString   //show value first image then description
+             +despString   //show value first description then image
+             + '</div><hr class="visible-xs">';
+        }
+        $("#product_div").append(image_and_desp_string);
+        number = number + 1; // to get different combination of image and description
     });
 });
 
