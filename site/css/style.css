@@ -307,6 +307,12 @@ canvas {
   color: white;
   background: #5dc8ac; }
 
+
+#serviceSection .container .row {
+
+}
+
+
 #serviceSection .container .row .column {
   text-align : center;
   border: 2px solid #145629;
@@ -412,8 +418,6 @@ canvas {
   #serviceSection .container, #contactSection .container, .panel-footer .container{
     width: 1300px;
   }
-
-
   
 }
 
@@ -436,6 +440,11 @@ canvas {
   
   #productSection .container .row .productDetails{
     padding:50px 30px;
+  }
+
+  #serviceSection .container .row {
+    max-width: 1050px;
+   margin: 15px auto;
   }
   
 }
@@ -691,6 +700,14 @@ canvas {
       padding: 17px 25px 10px 18px;
       /* text-align: justify; */
   }
+
+  #serviceSection .container .row {
+    margin: 30px 100px;
+  }
+
+  #serviceSection .container .row .column img {
+    padding: 0px 70px;
+  }
 }
 
 
@@ -736,5 +753,21 @@ canvas {
 
   #productSection .productImage {
       padding: 20px 30px;
+  }
+
+  #serviceSection .container .row {
+    margin: 30px 100px;
+  }
+
+  #serviceSection .container .row .column img {
+    padding: 0px 70px;
+  }
+
+  #serviceSection .container .row {
+    margin: 20px 50px;
+  }
+
+  #serviceSection .container .row .column img {
+    padding: 0px 40px;
   }
 }

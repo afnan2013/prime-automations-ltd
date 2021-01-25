@@ -174,7 +174,7 @@ db.collection('services').orderBy('image').onSnapshot((snapshot) => {
     //insertHtml("#main-content", response);
     snapshot.docs.forEach(doc => {
 
-       var serviceString = '<div class="col-md-3 column">'
+       var serviceString = '<div class="col-xl-3 col-md-3 col-sm-6 column">'
                             +'<img src="images/'+ doc.data().image +'" class="img-responsive">'
                             +'<h2>'+doc.data().heading+'</h2>'
                             +'<p>'+doc.data().details+'</p></div>';
