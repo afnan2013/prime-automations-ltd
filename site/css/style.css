@@ -3,6 +3,7 @@
   box-sizing: border-box;
 }
 
+
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
@@ -273,10 +274,6 @@ canvas {
 
 }
 
-
-
-
-
 #productSection .container .row #lastProductDetails{
   padding: 50px 20px 20px 20px;
 }
@@ -309,7 +306,7 @@ canvas {
 
 
 #serviceSection .container .row {
-
+  display: flex;
 }
 
 
@@ -319,7 +316,7 @@ canvas {
   border-radius: 0px;
   padding: 15px;
   font-size: 1.7em;
-  min-height: 650px;
+  
 }
 
 #serviceSection .container .row .column img{
@@ -336,6 +333,7 @@ canvas {
     /*font-size: 5vw;*/
   }
 
+
 #clientSection .container .row .clientDetails{
   font-size: 1.4em;
   padding:30px;
@@ -347,13 +345,20 @@ canvas {
   
 }
 
+#contactSection .container .row #contact_div {
+  padding: 55px 85px;
+}
+
+
 #contactSection .row h1{
   font-weight: bold;
+  font-size: 2em;
+  margin-bottom: 35px;
 }
 
 
 #contactSection .row h2{
-  font-size: 2.4em;
+  font-size: 1.7em;
 }
 
 /* FOOTER */
@@ -508,6 +513,21 @@ canvas {
       padding: 25px 25px 10px 20px;
       
   }
+
+  #serviceSection .container .row .column h2 {
+    /*margin-bottom: 25px;*/
+    font-size: 1.1em;
+  }
+
+  #serviceSection .container .row .column p {
+    /* text-align: justify; */
+    /* padding: 0px 10px; */
+    font-size: 0.9em;
+  }
+
+  #contactSection .container .row #contact_div {
+    padding: 65px 30px;
+  }
 }
 
 /********** Small devices only **********/
@@ -578,9 +598,30 @@ canvas {
       /* text-align: justify; */
   }
 
-  
+  #serviceSection .container .row {
+    display: block;
+    margin: 30px 50px;
+  }
+
+  #serviceSection .container .row .column {
+    min-height: 568px;
+  }
 
 
+  #serviceSection .container .row .column h2 {
+    /*margin-bottom: 25px;*/
+    font-size: 1.1em;
+  }
+
+  #serviceSection .container .row .column p {
+    /* text-align: justify; */
+    /* padding: 0px 10px; */
+    font-size: 0.85em;
+  }
+
+  #contactSection .container .row #contact_div {
+    padding: 40px 50px;
+  }
 }
 
 
@@ -710,6 +751,7 @@ canvas {
   }
 
   #serviceSection .container .row {
+    display: block;
     margin: 30px 100px;
   }
 
@@ -720,6 +762,9 @@ canvas {
   #serviceSection .container .row .column img {
     padding: 0px 30px;
   }
+
+
+
 }
 
 
@@ -795,4 +840,26 @@ canvas {
   #serviceSection .container .row p {
     font-size: 5vw;
   }
+
+
+  #contactSection .container .row #contact_div {
+    padding: 40px 30px;
+  }
+
+  #map-tile iframe {
+    height: 200px;
+  }  
+
+  #contactSection .row h1 {
+    /*font-weight: bold;*/
+    font-size: 5.5vw;
+    margin-bottom: 20px;
+  }
+
+  #contactSection .row h2 {
+    font-size: 4.5vw;
+    margin-top: 12px;
+  }
+
+
 }
