@@ -375,8 +375,34 @@ canvas {
   margin-bottom: 30px;
 }
 
+.panel-footer section hr{
+  width: 70%;
+}
+
+#information h1{
+  font-size: 25px;
+  letter-spacing: 1px;
+}
+
+#information h1{
+  font-size: 28px;
+  letter-spacing: 1px;
+}
+
+#information h3{
+  font-size: 20px;
+  letter-spacing: 0.7px;
+}
+
+#social-media .row .vertical_center {
+    display: flex;
+    align-items: center;
+    height: 70px;
+    width: auto;
+}
+
 #emailUs{
-  padding: 40px 60px 0px 60px;
+  padding: 40px 100px 0px 100px;
   text-align: center;
 }
 
@@ -390,14 +416,19 @@ canvas {
   border-radius: 15px;
 }
 
-#testimonials { 
-  margin-top: 200px;
-  padding-left: 50px;
+#social-media { 
+  margin-top: 20px;
+  padding-left: 0px;
 
 }
 
-#testimonials img{
-  padding-right: 30px;
+#social-media .social-media_col{
+  min-height: 200px;
+  /*padding-right: 30px;*/
+}
+
+#social-media a img{
+  /*padding-right: 30px;*/
 }
 
 #scrollUp {
@@ -635,7 +666,6 @@ canvas {
     width: 100px;
   }
 
-
   #particles-js {
     width: 100vw;
     height: 100vh;
@@ -763,8 +793,29 @@ canvas {
     padding: 0px 30px;
   }
 
+  .panel-footer div.row {
+    text-align: center;
+  }
 
+  #emailUs {
+    margin: 50px 55px 0px;
+    padding: 0px 20px;
+    /* text-align: center; */
+  }
+  
+  #social-media {
+    /* margin-top: 20px; */
+    /* padding-left: 0px; */
+    margin: 0px auto;
+    width: 285px;
+  }
 
+  #social-media a img{
+  /*padding-right: 30px;*/
+    width: 45px;
+  }
+
+  
 }
 
 
@@ -861,5 +912,36 @@ canvas {
     margin-top: 12px;
   }
 
+  #information h3 {
+    font-size: 5vw;
+    letter-spacing: 0.3px;
+    margin-top: 13px;
+  }
 
+  #information h1 {
+    margin-bottom: 25px;
+  }
+
+  #emailUs {
+    margin: 50px 20px 0px;
+    padding: 0px 15px;
+  }
+
+  #emailUs input, #emailUs textarea, #emailUs button {
+    font-size: 1.em;
+    /* margin-bottom: 25px; */
+    font-size: 4vw;
+  }
+
+  #social-media {
+    /* margin-top: 20px; */
+    /* padding-left: 0px; */
+    /*margin: 0px auto;*/
+    width: 265px;
+  }
+
+  #social-media a img{
+  /*padding-right: 30px;*/
+    width: 40px;
+  }
 }

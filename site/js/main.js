@@ -80,14 +80,14 @@ db.collection('settings').onSnapshot((snapshot) => {
                                 +email_text+'<br>'+mobile_text+'</h2>');
 
         // Add facebook, twitter, youtube, whatsapp link from firestore
-        $("#testimonials").append("<a href='#' onclick=window.open('"+doc.data().facebook+'\')>'
-                                + "<img src='images/logo-fb.PNG'></a>"
-                                + "<a href='#' onclick=window.open('"+doc.data().twitter+'\')>'
-                                + "<img src='images/logo-twit.PNG'></a>"
-                                + "<a href='#' onclick=window.open('"+doc.data().youtube+'\')>'
-                                + "<img src='images/logo-yt.PNG'></a>"
-                                + "<a href='#' onclick=window.open('"+doc.data().whatsapp+'\')>'
-                                + "<img src='images/logo-wa.PNG'></a>");
+        // $("#testimonials").append("<a href='#' onclick=window.open('"+doc.data().facebook+'\')>'
+        //                         + "<img src='images/logo-fb.PNG'></a>"
+        //                         + "<a href='#' onclick=window.open('"+doc.data().twitter+'\')>'
+        //                         + "<img src='images/logo-twit.PNG'></a>"
+        //                         + "<a href='#' onclick=window.open('"+doc.data().youtube+'\')>'
+        //                         + "<img src='images/logo-yt.PNG'></a>"
+        //                         + "<a href='#' onclick=window.open('"+doc.data().whatsapp+'\')>'
+        //                         + "<img src='images/logo-wa.PNG'></a>");
 
         // Show Copyright Text from firestore
         $("#copyright_text").append(doc.data().copyright);
