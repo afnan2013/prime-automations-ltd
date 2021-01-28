@@ -1,0 +1,30 @@
+<section id="serviceSection">
+  <div class="container">
+      <h2>Service Settings</h2>
+      <button class="btn btn-lg add-icon" title="Add More Service" onclick="$pal.addMoreService();">
+          <i class="fa fa-plus"></i> 
+      </button>
+
+      <form id="service_add_form">
+        <div class="form-group">
+          <label for="exampleInputServiceSerial1">Service Serial</label>
+          <input type="number" class="form-control" id="exampleInputServiceSerial1" name="serviceSerial" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputServiceName1">Service Title</label>
+          <input type="text" class="form-control" id="exampleInputServiceName1" name="serviceName" required>
+        </div>
+        <div class="form-group">
+          <label for="exampleInputDescription1">Service Description</label>
+          <textarea name="serviceDesc" rows="6" class="form-control" id="exampleInputTextArea1" placeholder="Enter Description" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="exampleFormControlFile1">Service Image</label>
+          <input type="file" name="images" class="form-control-file" id="inputFile" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </form>
+  </div>
+</section>
+

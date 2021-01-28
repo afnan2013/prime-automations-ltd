@@ -1,0 +1,24 @@
+<!--Hidden Div, Appear when edit button is pressed-->
+<div class="container" id="updateService">
+    
+    <form id="service_update_form">
+      <h3>Update The Service</h3>
+      <div class="form-group">
+        <label for="exampleInputServiceSerial1">Service Serial</label>
+        <input type="number" class="form-control" id="exampleInputServiceSerial1" name="updateServiceSerial" required>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputServiceName1">Service Title</label>
+        <input type="text" class="form-control" id="updateServiceName" name="updateServiceName" required>
+      </div>
+      <div class="form-group">
+        <label for="exampleInputDescription1">Service Description</label>
+        <textarea rows="6" class="form-control" name="updateServiceDesc" id="updateServiceDesc" placeholder="Enter Description" required></textarea>
+      </div>
+      <div class="form-group">
+        <label for="exampleFormControlFile1">Service Image</label>
+        <input type="file" name="images" class="form-control-file" name="serviceImage" id="inputFile">
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>

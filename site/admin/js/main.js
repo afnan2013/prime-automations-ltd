@@ -126,6 +126,10 @@
   // pal means Prime Automation Ltd
   var pal = {};
 
+  var addServiceHtml = "snippets/add-service-snippet.html";
+  var allServiceListHtml = "snippets/service-list-snippet.html";
+  var updateServiceHtml = "snippets/update-service-snippet.html";
+
   var addProductHtml = "snippets/add-product-snippet.html";
   var allProductListHtml = "snippets/product-list-snippet.html";
   var updateProductHtml = "snippets/update-product-snippet.html";
@@ -250,7 +254,9 @@
             insertHtml("#main-content", aboutAndSliderImageListViewHtml);
             settings_snapshot.docs.forEach(doc => {
               var aboutTextArea = document.getElementById("aboutSectionTextArea");
+              var aboutVideoLink = document.getElementById("aboutSectionVideo");
               aboutTextArea.value = doc.data().about;
+              aboutVideoLink.value = doc.data().video;
               updateAboutText(doc.id);
             });
           });
@@ -290,9 +296,11 @@
       e.preventDefault();
       if (confirm("Are you sure to update?")) {
         const aboutSectionTextArea = updateAboutTextForm['aboutSectionTextArea'].value;
+        const aboutSectionVideo = updateAboutTextForm['aboutSectionVideo'].value;
         //console.log(inputImage.name);
         db.collection("settings").doc(id).update({ 
           about: aboutSectionTextArea,
+          video: aboutSectionVideo
         }).then(function () {
           //alert("Yeah Updated!!");
         }).catch(function (error) {
@@ -550,6 +558,7 @@
       const brandName = brandAddForm['brandName'].value;
       const brandDesc = brandAddForm['brandDesc'].value;
       const brandLink = brandAddForm['brandLink'].value;
+      const brandSerial = brandAddForm['brandSerial'].value;
       const inputImage = document.getElementById('inputFile').files[0];
 
       const fileName = new Date() + "-"+ inputImage.name; 
@@ -567,7 +576,8 @@
             name: brandName,
             description: brandDesc,
             link: brandLink,
-            imageUrl: url
+            imageUrl: url,
+            serial: brandSerial
           }).then(() => {
             productAddForm.reset();
             document.getElementById("brand_add_form").style.display = "none";
@@ -592,10 +602,143 @@
   //          Servic Section JS Starts               
   //********************************************//
   pal.loadServicesSection = () => {
+    // On first load, show home view
+    showLoader("#main-content");
+    // Load add product snippet
+    $ajaxUtils.sendGetRequest(addServiceHtml, buildAndShowServicesHTML, false);
+  };
 
+  function buildAndShowServicesHTML(addServiceHtmlRes){
+    // Retrieving Real-time Data All Product Lists From firebase firestore db
+    db.collection('services').orderBy('name').onSnapshot((snapshot) => {
+      //console.log(snapshot);
+      //let changes = snapshot.docChanges();
+      //console.log(changes);
+      // Retrieve single product snippet
+      $ajaxUtils.sendGetRequest(allServiceListHtml, 
+        function (allServiceListHtmlRes) {
+          // Switch CSS class active to menu button
+          //switchMenuToActive(); updateProductHtml
+          $ajaxUtils.sendGetRequest(updateServiceHtml, function(updateServiceHtmlRes) {
+            var serviceListViewHtml = buildServiceListViewHtml(snapshot, addServiceHtmlRes, allServiceListHtmlRes, updateServiceHtmlRes);
+            insertHtml("#main-content", serviceListViewHtml);
+          }, false);
+          
+      }, false);
+    });
+  }
+
+
+  function buildServiceListViewHtml(snapshot, addServiceHtmlRes, allServiceListHtmlRes, updateServiceHtmlRes){
+    var finalHtml = addServiceHtmlRes;
+    finalHtml += '<div id="servicetListSection" class="container"><section class="row">';
+    
+    snapshot.docs.forEach(doc => {
+      console.log(doc.id);
+      //if (snap.type == 'added'){
+        var html = allServiceListHtmlRes;
+        //console.log(snap.doc.data().imageUrl);
+        html = insertProperty(html, "name", doc.data().name);
+        html = insertProperty(html, "imageUrl", doc.data().imageUrl); 
+        html = insertProperty(html, "serviceId", doc.id);
+      //}
+      finalHtml += html;
+    });
+
+    finalHtml += '</section></div>';
+    finalHtml+= updateServiceHtmlRes;
+
+    return finalHtml;
+  }
+
+
+  //**** Loading the Service Section Ends ***** 
+
+  // Addition of a Service to the FireBase FireStore and Stores the image in the Storage
+  pal.addMoreService = () => {
+    document.getElementById("service_add_form").style.display = "block";
+    const serviceAddForm = document.querySelector("#service_add_form");
+
+    // Event for submiting the Add Product Form
+    serviceAddForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const serviceSerial = serviceAddForm['serviceSerial'].value;
+      const serviceName = serviceAddForm['serviceName'].value;
+      const serviceDesc = serviceAddForm['serviceDesc'].value;
+      const inputImage = document.getElementById('inputFile').files[0];
+
+      const fileName = new Date() + "-"+ inputImage.name; 
+      //console.log(inputImage.name);
+
+      const metaData = {
+        contentType: inputImage.type
+      }
+
+      storage.child(fileName).put(inputImage, metaData)
+        .then(snapshot => snapshot.ref.getDownloadURL())
+        .then(url => {
+          //console.log(url);
+          db.collection('services').add({
+            serial: serviceSerial,
+            name: serviceName,
+            description: serviceDesc,
+            imageUrl: url
+          }).then(() => {
+            serviceAddForm.reset();
+            document.getElementById("service_add_form").style.display = "none";
+            //alert("Image Upload Successful");
+          });
+          
+        });
+    });
+  };
+
+
+  // Update of a product to the FireBase FireStore and Stores the image in the Storage
+  pal.updateService = (id) => {
+    document.getElementById("service_update_form").style.display = "block";
+    const serviceUpdateForm = document.querySelector("#service_update_form");
+    window.scrollTo(0, document.body.scrollHeight);
+
+    var serviceSerial = document.getElementById("exampleInputServiceSerial1");
+    var serviceName = document.getElementById("updateServiceName");
+    var serviceDesc = document.getElementById("updateServiceDesc");
+  
+    // show value of description and image in input field
+    db.collection('services').doc(id).get().then((doc) => {
+      //console.log(doc.data().serial);
+      //serviceSerial.value = "1";
+      serviceName.value = doc.data().name;
+      serviceDesc.value = doc.data().description;
+    });
+
+
+    // Event for submiting the Add Product Form
+    serviceUpdateForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+      if (confirm("Are you sure to update?")) {
+        //console.log(inputImage.name);
+        db.collection("services").doc(id).update({ 
+          serial: serviceUpdateForm['updateServiceSerial'].value,
+          name: serviceUpdateForm['updateServiceName'].value,
+          description: serviceUpdateForm['updateServiceDesc'].value
+        }).then(function () {
+          document.getElementById("service_update_form").style.display = "none";
+          //alert("Yeah Updated!!");
+        }).catch(function (error) {
+          console.log('Update failed: ' + error.message);
+        });
+      }
+    });
+  };
+
+  pal.deleteProduct = (servideId) => {
+    if (confirm("Are you sure to update?")) {
+      db.collection('services').doc(servideId).delete();
+    }
   };
   // *******************************************//
-  //          Brand Section JS Ends               
+  //          Service Section JS Ends               
   //********************************************//
 
   // -------------------------------------------------------------------------------------------------------------------------------

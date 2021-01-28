@@ -47,14 +47,14 @@ scroll_Top.addEventListener('click', (e) => { // scroll to top
 db.collection('settings').onSnapshot((snapshot) => {
     //insertHtml("#main-content", response);
     snapshot.docs.forEach(doc => {
-
+        console.log(doc.data().about);
         // Show tittle in tittle section from firestore
-        var tittle_section = doc.data().tittle;
-        $("#tittle").append(tittle_section);
+        var title_section = doc.data().title;
+        $("#title").append(title_section);
 
         // Show Main tittle from firestore
-        $("#company_tittle").append('<span class="js-count-particles"><p>'
-                                    + tittle_section +'</p></span>');
+        $("#company_title").append('<span class="js-count-particles"><p>'
+                                    + title_section +'</p></span>');
         
         // Show Banner text from firestore
         $("#exploreSite").append(doc.data().banner);
@@ -80,7 +80,8 @@ db.collection('settings').onSnapshot((snapshot) => {
                                 +email_text+'<br>'+mobile_text+'</h2>');
 
         // Add facebook, twitter, youtube, whatsapp link from firestore
-        // $("#testimonials").append("<a href='#' onclick=window.open('"+doc.data().facebook+'\')>'
+        
+        // $("#social-media").append("<a href='#' onclick=window.open('"+doc.data().facebook+'\')>'
         //                         + "<img src='images/logo-fb.PNG'></a>"
         //                         + "<a href='#' onclick=window.open('"+doc.data().twitter+'\')>'
         //                         + "<img src='images/logo-twit.PNG'></a>"
@@ -89,6 +90,21 @@ db.collection('settings').onSnapshot((snapshot) => {
         //                         + "<a href='#' onclick=window.open('"+doc.data().whatsapp+'\')>'
         //                         + "<img src='images/logo-wa.PNG'></a>");
 
+        $("#social-media").append("<div class='row'>"+
+                                      "<div class='col-md-3 col-sm-3 col-xs-3 vertical_center'>"+
+                                        "<a href='#' target='_blank' onclick=window.open('"+doc.data().facebook+'\')>'+
+                                        "<img class='img-responsive' src='images/logo-fb.PNG'></a></div>"+
+                                      "<div class='col-md-3 col-sm-3 col-xs-3 vertical_center'>"+
+                                        "<a href='#' target='_blank' onclick=window.open('"+doc.data().twitter+'\')>'+
+                                        "<img class='img-responsive' src='images/logo-wa.PNG'></a></div>"+
+                                      "<div class='col-md-3 col-sm-3 col-xs-3 vertical_center'>"+
+                                        "<a href='#' target='_blank' onclick=window.open('"+doc.data().youtube+'\')>'+
+                                        "<img class='img-responsive' src='images/logo-twit.PNG'></a></div>"+
+                                      "<div class='col-md-3 col-sm-3 col-xs-3 vertical_center'>"+
+                                        "<a href='#' target='_blank' onclick=window.open('"+doc.data().whatsapp+'\')>'+
+                                        "<img class='img-responsive' src='images/logo-yt.PNG'></a></div>"+
+                                  "</div>");
+
         // Show Copyright Text from firestore
         $("#copyright_text").append(doc.data().copyright);
     });
@@ -96,21 +112,21 @@ db.collection('settings').onSnapshot((snapshot) => {
 
 // Slider Show from Firestore
 var flag = 1; // is used to separate class of active and not active class
-db.collection('sliders').onSnapshot((snapshot) => {
+db.collection('slider-images').onSnapshot((snapshot) => {
     //insertHtml("#main-content", response);
     
     snapshot.docs.forEach(doc => {
         
-        var image = doc.data().slider;
+        var image = doc.data().imageUrl;
         // For first image classs is 'item active'
         if(flag == 1) {
             var imageName = '<div class="item active">'  
-                            + '<img src="images/' + image + '"alt="...">'
+                            + '<img src="'+ image + '"alt="...">'
                             + '<div class="carousel-caption">...</div>'
                             + '</div>';
         } else { // For first image classs is 'item'
             var imageName = '<div class="item">'  
-                            + '<img src="images/' + image + '"alt="...">'
+                            + '<img src="'+ image + '"alt="...">'
                             + '<div class="carousel-caption">...</div>'
                             + '</div>';}
         $("#catousel_div").append(imageName);
@@ -120,13 +136,13 @@ db.collection('sliders').onSnapshot((snapshot) => {
 });
 
 // Show ALL Brands from firestore
-db.collection('brands').orderBy('image').onSnapshot((snapshot) => {
+db.collection('brands').orderBy('serial').onSnapshot((snapshot) => {
     //insertHtml("#main-content", response);
     snapshot.docs.forEach(doc => {
-
+       console.log(doc.data().imageUrl);
        var brand = '<div class="column">'
-                       + '<img src="images/' 
-                       + doc.data().image + '" class="img-responsive" alt="Picture of Restaurent"></div>';
+                       + '<a href="'+doc.data().link+'" target="_blank"><img src="' 
+                       + doc.data().imageUrl + '" class="img-responsive" alt="Picture of Restaurent"></a></div>';
 
        $("#brandLogo").append(brand);
         
@@ -135,15 +151,15 @@ db.collection('brands').orderBy('image').onSnapshot((snapshot) => {
 
 // Show ALL Products from firestore
 var number = 1; // is used for image & description combination
-db.collection('products').orderBy('image').onSnapshot((snapshot) => {
+db.collection('products').orderBy('name').onSnapshot((snapshot) => {
     //insertHtml("#main-content", response);
     snapshot.docs.forEach(doc => {
 
         var isOdd = number % 2 == 1;
         var desp = doc.data().description;
-        var image = doc.data().image;
+        var image = doc.data().imageUrl;
         var imageString = '<div class="col-md-6 col-sm-6 col-xs-12 productImage">'
-                        + '<img src="images/' + image + '">'
+                        + '<img src="' + image + '">'
                         + '</div>';
         var despString = '<div class="col-md-6 col-sm-6 col-xs-12 productDetails">'
                         + '<p>' + desp + '</p>'
@@ -170,14 +186,14 @@ db.collection('products').orderBy('image').onSnapshot((snapshot) => {
 });
 
 // Show ALL Services One by One from firestore
-db.collection('services').orderBy('image').onSnapshot((snapshot) => {
+db.collection('services').orderBy('serial').onSnapshot((snapshot) => {
     //insertHtml("#main-content", response);
     snapshot.docs.forEach(doc => {
 
        var serviceString = '<div class="col-xl-3 col-md-3 col-sm-6 column">'
-                            +'<img src="images/'+ doc.data().image +'" class="img-responsive">'
-                            +'<h2>'+doc.data().heading+'</h2>'
-                            +'<p>'+doc.data().details+'</p></div>';
+                            +'<img src="'+ doc.data().imageUrl +'" class="img-responsive">'
+                            +'<h2>'+doc.data().name+'</h2>'
+                            +'<p>'+doc.data().description+'</p></div>';
 
        $("#service_div").append(serviceString);
         
@@ -194,40 +210,40 @@ db.collection('clients').onSnapshot((snapshot) => {
     });
 });
 
-// Add animation in different section
-//const canvas = document.querySelector("#canvas-site");
-const particles = document.querySelector("#particles-js");
-const tittle = document.querySelector("#company_tittle");
-const logoImage = document.querySelector("#sitelogo");
-const siteText = document.querySelector("#exploreSite");
-const about = document.querySelector("#aboutSection");
-const brand = document.querySelector("#brandSection");
-const client = document.querySelector("#clientSection");
-//document.getElementById("canvas-site").style.display = "block";
-// object of animation script
-const t1 = new TimelineMax();
+// // Add animation in different section
+// //const canvas = document.querySelector("#canvas-site");
+// const particles = document.querySelector("#particles-js");
+// const tittle = document.querySelector("#company_tittle");
+// const logoImage = document.querySelector("#sitelogo");
+// const siteText = document.querySelector("#exploreSite");
+// const about = document.querySelector("#aboutSection");
+// const brand = document.querySelector("#brandSection");
+// const client = document.querySelector("#clientSection");
+// //document.getElementById("canvas-site").style.display = "block";
+// // object of animation script
+// const t1 = new TimelineMax();
 
-t1.fromTo(particles, 1, { x:"-90%" }, { x: "0%", ease: Power2.easeInOut })
-.fromTo(tittle, 1.5, { y:"-100%" }, { y: "0%", ease: Power2.easeInOut })
-.fromTo(logoImage, 1.2, { y:"-40%" }, { y: "0%", ease: Power2.easeInOut })
-.fromTo(siteText, 1.2, { y:"-100%" }, { y: "0%", ease: Power2.easeInOut }, "-=1.2");
+// t1.fromTo(particles, 1, { x:"-90%" }, { x: "0%", ease: Power2.easeInOut })
+// .fromTo(tittle, 1.5, { y:"-100%" }, { y: "0%", ease: Power2.easeInOut })
+// .fromTo(logoImage, 1.2, { y:"-40%" }, { y: "0%", ease: Power2.easeInOut })
+// .fromTo(siteText, 1.2, { y:"-100%" }, { y: "0%", ease: Power2.easeInOut }, "-=1.2");
 
-// Animation occure when particular section is reached
-scrolledDown = false;
-$(window).scroll(function () {
+// // Animation occure when particular section is reached
+// scrolledDown = false;
+// $(window).scroll(function () {
 
-    // scrollUp Button appear, after some scrolling
-    var current = $(this).scrollTop();
-    if(current > 1000) {
-        document.getElementById("scrollUp").style.display = "block";
-    } else {
-        document.getElementById("scrollUp").style.display = "none";
-    }
+//     // scrollUp Button appear, after some scrolling
+//     var current = $(this).scrollTop();
+//     if(current > 1000) {
+//         document.getElementById("scrollUp").style.display = "block";
+//     } else {
+//         document.getElementById("scrollUp").style.display = "none";
+//     }
 
-    // when about section is on view
-    if ($(this).scrollTop() >= (about.offsetWidth-500) && !scrolledDown) {
-        t1.fromTo(about, 1.2, { y:"45%", opacity: 0 }, { y: "0%", opacity: 1 });
-        scrolledDown = true;
-    }
+//     // when about section is on view
+//     if ($(this).scrollTop() >= (about.offsetWidth-500) && !scrolledDown) {
+//         t1.fromTo(about, 1.2, { y:"45%", opacity: 0 }, { y: "0%", opacity: 1 });
+//         scrolledDown = true;
+//     }
 
-});
+// });
