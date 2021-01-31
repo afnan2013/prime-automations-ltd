@@ -333,7 +333,7 @@ canvas {
 }
 
 #serviceSection .container .row .column p {
-    text-align: justify;
+    /*text-align: justify;*/
     padding: 0px 10px;
     /*font-size: 5vw;*/
   }
@@ -349,7 +349,7 @@ canvas {
   font-size: 1.4em;
   padding:30px;
 }
-
+*/
 #contactSection .row{
   margin: 40px 0px;
   color: #145629;
@@ -370,7 +370,7 @@ canvas {
 
 #contactSection .row h2{
   font-size: 1.7em;
-}*/
+}
 
 /* FOOTER */
 .panel-footer {

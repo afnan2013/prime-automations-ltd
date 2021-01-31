@@ -210,10 +210,56 @@ db.collection('clients').onSnapshot((snapshot) => {
     });
 });
 
+
+  // -------------------------------------------------------------------------------------------------------------------------------
+//************** Animation
+let config = {strength: 1};
+// add animation in all heading
+gsap.to("h1", {
+    repeat: -1,
+    yoyo: true,
+    y: 12,
+    duration: 1.5,
+    ease: "power1.inOut",
+    modifiers: {
+      x: gsap.utils.unitize(value => value * config.strength, "px")
+    }
+  });
+
+  // add animation in about paragraph
+  const about = document.getElementById("about-para");
+
+  gsap.to(about, {
+    repeat: -1,
+    yoyo: true,
+    x: 10,
+    duration: 1,
+    ease: "power1.inOut",
+    modifiers: {
+      x: gsap.utils.unitize(value => value * config.strength, "px")
+    }
+  });
+
+
+
+const banner = document.getElementById("exploreSite");
+
+gsap.to(banner, {
+    repeat: -1,
+    yoyo: true,
+    y: 12,
+    duration: 1.5,
+    ease: "power1.inOut",
+    modifiers: {
+      x: gsap.utils.unitize(value => value * config.strength, "px")
+    }
+  });
+
+
 // // Add animation in different section
 // //const canvas = document.querySelector("#canvas-site");
 // const particles = document.querySelector("#particles-js");
-// const tittle = document.querySelector("#company_tittle");
+// const tittle = document.querySelector("#company_title");
 // const logoImage = document.querySelector("#sitelogo");
 // const siteText = document.querySelector("#exploreSite");
 // const about = document.querySelector("#aboutSection");
@@ -247,3 +293,34 @@ db.collection('clients').onSnapshot((snapshot) => {
 //     }
 
 // });
+
+
+// Add animation in different section
+const particles = document.querySelector("#particles-js");
+const title = document.querySelector("#company_title");
+const logoImage = document.querySelector("#sitelogo");
+const siteText = document.querySelector("#exploreSite");
+
+// object of animation script
+const t1 = new TimelineMax();
+
+t1.fromTo(particles, 1, { x:"-90%" }, { x: "0%", ease: Power2.easeInOut })
+ .fromTo(title, 1.5, { y:"-100%", opacity: 0 }, { y: "0%", opacity: 1, ease: Power2.easeInOut }, "-=1.2");
+ //.fromTo(logoImage, 1.2, { y:"-40%" , opacity: 0 }, { y: "0%", opacity: 1, ease: Power2.easeInOut }, "-=1.2")
+ //.fromTo(siteText, 1.2, { y:"-100%" , opacity: 0 }, { y: "0%", opacity: 1, ease: Power2.easeInOut }, "-=1.2");
+
+// Animation occur when particular section is reached
+scrolledDown = false;
+$(window).scroll(function () {
+
+    // scrollUp Button appare, after some scrolling
+    var current = $(this).scrollTop();
+    if(current > 350) {
+        document.getElementById("scrollUp").style.display = "block";
+    } else {
+        document.getElementById("scrollUp").style.display = "none";
+    }
+
+    // add active class of navbar
+    addClassOnScroll();
+});
