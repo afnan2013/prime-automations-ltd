@@ -339,10 +339,24 @@ canvas {
   }
 
 
+#clientSection .container .carousel-inner {
+  background: #ABFFB7;
+}
+
+#clientSection .container #carousel_div .item{
+  padding-bottom: 150px;
+}
+
+
 #clientSection .container #carousel_div .clientImage {
     padding-bottom: 0px;
     margin: auto;
     clip-path: circle();
+}
+
+.carousel-caption {
+  
+  color: #145629;
 }
 
 /*#clientSection .container .row .clientDetails{
@@ -819,6 +833,11 @@ canvas {
 
   #serviceSection .container .row .column img {
     padding: 0px 30px;
+  }
+
+  #clientSection .container #carousel_div .carousel-caption {
+    top: 55%;
+    color: #145629;
   }
 
   .panel-footer div.row {
