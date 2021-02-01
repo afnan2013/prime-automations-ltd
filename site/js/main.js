@@ -36,6 +36,10 @@ $("#navContactButton").click(function() {
     }, 800);
 });
 
+
+
+
+
 // function for scrolling all the way up
 var scroll_Top = document.getElementById("scrollUp");
 scroll_Top.addEventListener('click', (e) => { // scroll to top
@@ -43,6 +47,7 @@ scroll_Top.addEventListener('click', (e) => { // scroll to top
     $('html, body').animate({scrollTop: $("#header-nav").offset().top}, 'slow');
         return false;
 });
+
 
 db.collection('settings').onSnapshot((snapshot) => {
     //insertHtml("#main-content", response);
@@ -152,6 +157,7 @@ db.collection('brands').orderBy('serial').onSnapshot((snapshot) => {
 // Show ALL Products from firestore
 var number = 1; // is used for image & description combination
 db.collection('products').orderBy('name').onSnapshot((snapshot) => {
+
     //insertHtml("#main-content", response);
     snapshot.docs.forEach(doc => {
 
@@ -183,6 +189,7 @@ db.collection('products').orderBy('name').onSnapshot((snapshot) => {
         $("#product_div").append(image_and_desp_string);
         number = number + 1; // to get different combination of image and description
     });
+
 });
 
 // Show ALL Services One by One from firestore
@@ -193,10 +200,20 @@ db.collection('services').orderBy('serial').onSnapshot((snapshot) => {
        var serviceString = '<div class="col-xl-3 col-md-3 col-sm-6 column">'
                             +'<img src="'+ doc.data().imageUrl +'" class="img-responsive">'
                             +'<h2>'+doc.data().name+'</h2>'
-                            +'<p>'+doc.data().description+'</p></div>';
+                            +'<div class="serviceDescription"><p>'+doc.data().description+'</div></p></div>';
 
        $("#service_div").append(serviceString);
-        
+
+       $(function () {
+
+           $("#service_div").click(function() {
+             $(".serviceDescription").css("display", "block");
+           }); 
+
+           $(".serviceDescription").blur(function(event) {
+                 $(".serviceDescription").css("display", "none");
+           }); 
+       });
     });
 });
 
@@ -210,9 +227,47 @@ db.collection('clients').onSnapshot((snapshot) => {
     });
 });
 
+// function animateFrom(elem, direction) {
+//     direction = direction | 1;
+    
+//     var x = 0,
+//         y = direction * 100;
+//     if(elem.classList.contains("gs_reveal_fromLeft")) {
+//       x = -200;
+//       y = 0;
+//     } else if(elem.classList.contains("gs_reveal_fromRight")) {
+//       x = 200;
+//       y = 0;
+//     }
+//     gsap.fromTo(elem, {x: x, y: y, autoAlpha: 0}, {
+//       duration: 1.5, 
+//       x: 0,
+//       y: 0, 
+//       autoAlpha: 1, 
+//       ease: "expo", 
+//       overwrite: "auto"
+//     });
+//   }
+  
+//   document.addEventListener("DOMContentLoaded", function() {
+//     // ScrollTrigger is a class when we reach at that position then the animation will trigger 
+//     gsap.registerPlugin(ScrollTrigger);
+    
+//     gsap.utils.toArray(".gs_reveal").forEach(function(elem) {
+      
+//       ScrollTrigger.create({
+//         start: "15px 75%",
+//         trigger: elem,
+//         toggleActions: 'play none none none',
+//         onEnter: function() { animateFrom(elem) }, 
+//         once: true
+//         });
+//     });
+//   });
 
-  // -------------------------------------------------------------------------------------------------------------------------------
-//************** Animation
+
+//   // -------------------------------------------------------------------------------------------------------------------------------
+// //************** Animation
 let config = {strength: 1};
 // add animation in all heading
 gsap.to("h1", {
@@ -226,19 +281,19 @@ gsap.to("h1", {
     }
   });
 
-  // add animation in about paragraph
-  const about = document.getElementById("about-para");
+  // // add animation in about paragraph
+  // const about = document.getElementById("about-para");
 
-  gsap.to(about, {
-    repeat: -1,
-    yoyo: true,
-    x: 10,
-    duration: 1,
-    ease: "power1.inOut",
-    modifiers: {
-      x: gsap.utils.unitize(value => value * config.strength, "px")
-    }
-  });
+  // gsap.to(about, {
+  //   repeat: -1,
+  //   yoyo: true,
+  //   x: 10,
+  //   duration: 1,
+  //   ease: "power1.inOut",
+  //   modifiers: {
+  //     x: gsap.utils.unitize(value => value * config.strength, "px")
+  //   }
+  // });
 
 
 
@@ -247,8 +302,8 @@ const banner = document.getElementById("exploreSite");
 gsap.to(banner, {
     repeat: -1,
     yoyo: true,
-    y: 12,
-    duration: 1.5,
+    y: 25,
+    duration: 1,
     ease: "power1.inOut",
     modifiers: {
       x: gsap.utils.unitize(value => value * config.strength, "px")
@@ -322,5 +377,5 @@ $(window).scroll(function () {
     }
 
     // add active class of navbar
-    addClassOnScroll();
+    //addClassOnScroll();
 });
