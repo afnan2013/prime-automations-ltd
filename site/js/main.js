@@ -270,6 +270,7 @@ db.collection('clients').onSnapshot((snapshot) => {
 // //************** Animation
 let config = {strength: 1};
 // add animation in all heading
+
 gsap.to("h1", {
     repeat: -1,
     yoyo: true,
