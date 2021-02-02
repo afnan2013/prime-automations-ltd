@@ -39,9 +39,9 @@ canvas {
   font-size: 60px;
   font-weight: bold;
   color: white;
-  letter-spacing: 2px;
+  letter-spacing: 4px;
   font-family: Helvetica, Arial, sans-serif;
-  margin-left: -400px;;
+  margin-left: -429.2px;
 }
 
 .js-particles{
@@ -77,10 +77,11 @@ canvas {
   font-size: 33px; 
   color: white;
   border-color: transparent; 
-  margin-left: -294px;
+  margin-left: -285px;
   margin-right: auto;
   letter-spacing: 3px; 
   font-family: 'Roboto', sans-serif;
+  font-style: italic;
   border: none;
   outline:none;
 }
@@ -94,7 +95,7 @@ canvas {
 
 /* HEADER */
 #header-nav {
-  margin-top: 20px;
+  padding-top: 20px;
   background-color: #ffffff;
   border: 0px;
   border-radius: 0px;
@@ -192,7 +193,7 @@ canvas {
 }
 
 .navbar-header{
-  margin: 30px 0px;
+  margin: 10px 0px 20px 0px
 }
 
 .navbar-header button.navbar-toggle, .navbar-header button.navbar-toggle span {
@@ -356,7 +357,7 @@ canvas {
 }
 
 #clientSection .container #carousel_div .item{
-  padding-bottom: 150px;
+  /*padding-bottom: 150px;*/
 }
 
 
@@ -495,11 +496,6 @@ canvas {
     width: 1300px;
   }
   
-  .gs_reveal {
-  opacity: 0;
-  visibility: hidden;
-  transition: transform 0s;
-}
 }
 
 /********** Mediam- Large devices only **********/
@@ -535,14 +531,19 @@ canvas {
   /* HEADER PAGE */
 
   #sitelogo{
-    margin-top: -50px;
-    margin-left: -50px;  /* half of your logo size should be minus*/
+    margin-top: -75px;
+    margin-left: -75px;  /* half of your logo size should be minus*/
   }
 
   #logo-canvas {
-    background: url('../images/siteLogo/logo-middle-medium.png') no-repeat;
-    height: 100px;
-    width: 100px;
+    background: url('../images/siteLogo/logo-middle.png') no-repeat;
+    height: 150px;
+    width: 150px;
+  }
+
+  .count-particles {
+    font-size: 50px;
+    margin-left: -364.5px;
   }
 
   #nav-list {
@@ -551,7 +552,8 @@ canvas {
   }
 
   #exploreSite {
-    font-size: 35px;
+    font-size: 28px;
+    margin-left: -250px;
   }
 
   #logo-img {
@@ -611,18 +613,24 @@ canvas {
 @media (min-width: 768px) and (max-width: 991px) {
 
   #sitelogo{
-    margin-top: -50px;
-    margin-left: -50px;  /* half of your logo size should be minus*/
+    margin-top: -75px;
+    margin-left: -75px;  /* half of your logo size should be minus*/
   }
 
   #logo-canvas {
-    background: url('../images/siteLogo/logo-middle-medium.png') no-repeat;
-    height: 100px;
-    width: 100px;
+    background: url('../images/siteLogo/logo-middle.png') no-repeat;
+    height: 150px;
+    width: 150px;
   }
-  
+
+  .count-particles {
+    font-size: 50px;
+    margin-left: -364.5px;
+  }
+
   #exploreSite {
-    font-size: 33px;
+    font-size: 28px;
+    margin-left: -250px;
   }
 
   .navbar-info  .navbar-info-email {
@@ -711,14 +719,14 @@ canvas {
 @media (max-width: 767px ) {
 
   #sitelogo{
-    margin-top: -50px;
-    margin-left: -50px;  /* half of your logo size should be minus*/
+    margin-top: -62.5px;
+    margin-left: -62.5px;  /* half of your logo size should be minus*/
   }
 
   #logo-canvas {
-    background: url('../images/siteLogo/logo-middle-medium.png') no-repeat;
-    height: 100px;
-    width: 100px;
+    background: url('../images/siteLogo/logo-middle-mid.png') no-repeat;
+    height: 125px;
+    width: 125px;
   }
 
   #particles-js {
@@ -727,20 +735,21 @@ canvas {
   }
 
   .count-particles {
-    font-size: 25px;
-    margin-left: -160px;
+    font-size: 30px;
+    margin-left: -225px;
+    letter-spacing: 3px;
   }
 
   #exploreSite {
-    font-size: 28px;
-    margin-left: -275px;
+    font-size: 24px;
+    margin-left: -226px;
   }
 
   #header-nav{
     margin: 0px 0px;
     padding-left: 15px; 
     padding-right: 15px; 
-    background-color: #004044;
+    background-color: #379C41;
   }
 
   #logo-img-mobile{
@@ -776,7 +785,7 @@ canvas {
   
 
   .navbar-brand {
-    padding: 0px 15px 0px 25px;
+    padding: 0px 15px 0px 45px;
     height: 105px; 
   }
 
@@ -786,15 +795,20 @@ canvas {
     font-size: 5vw;   /* 1 vm = 1% of the Viewdevice width and its responsive */
   }
 
+  .navbar-toggle{
+    margin-right: 40px;
+  }
+
   #call-btn > a {
     font-size: 1.5em;
     display: block;
-    background-color: #f6b319;
-    border: 2px solid #fff;
-    color: #004044;
-    margin: 0px 20px;
+    background-color: #0C2B25;
+    /*border: 2px solid #fff;*/
+    color: white;
+    margin: 4px 0px;
     padding: 10px;
   }
+  
 
   .sectionTitle { 
     padding: 0px;
@@ -836,6 +850,13 @@ canvas {
     padding: 40px 60px 40px 60px;
   }
 
+  #productSection .container .row .productImage img {
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
+  }
+
+
   #productSection .container .row .productDetails {
       /* font-size: 1.7em; */
       padding: 17px 25px 10px 18px;
@@ -855,11 +876,11 @@ canvas {
     padding: 0px 30px;
   }
 
-  #clientSection .container #carousel_div .carousel-caption {
+  /*#clientSection .container #carousel_div .carousel-caption {
     top: 55%;
     color: #145629;
   }
-
+*/
   .panel-footer div.row {
     text-align: center;
   }
@@ -903,17 +924,20 @@ canvas {
 
 
   .count-particles {
-    top: 25%;
-    font-size: 20px;
-    margin-left: -152px;
+    top: 12%;
+    font-size: 36px;
+    margin-left: -160px;
     font-weight: bold;
-    letter-spacing: 2.4px;
+    letter-spacing: 3.4px;
+    
   }
 
   #exploreSite {
     top: 73%;
-    font-size: 18px;
-    margin-left: -191px;
+    font-size: 22px;
+    width: 282px;
+    margin-left: -140px;
+    /*letter-spacing: ;*/
   }
 
   .sectionTitle { 
@@ -1029,4 +1053,36 @@ canvas {
   /*padding-right: 30px;*/
     width: 40px;
   }
+}
+
+/********** Super extra small devices Only :-) (e.g., iPhone 4) **********/
+@media (max-width: 365px) {
+  #sitelogo{
+    margin-top: -50px;
+    margin-left: -50px;  /* half of your logo size should be minus*/
+  }
+
+  #logo-canvas {
+    background: url('../images/siteLogo/logo-middle-medium.png') no-repeat;
+    height: 100px;
+    width: 100px;
+  }
+
+
+  .count-particles {
+    top: 12%;
+    font-size: 28px;
+    margin-left: -130px;
+    font-weight: bold;
+    letter-spacing: 3px;
+  }
+
+  #exploreSite {
+    font-size: 18px;
+    width: 250px;
+    margin-left: -126px;
+    /*letter-spacing: ;*/
+  }
+
+
 }

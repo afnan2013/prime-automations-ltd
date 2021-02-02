@@ -117,7 +117,7 @@ db.collection('settings').onSnapshot((snapshot) => {
 
 // Slider Show from Firestore
 var flag = 1; // is used to separate class of active and not active class
-db.collection('slider-images').onSnapshot((snapshot) => {
+db.collection('slider-images').orderBy('serial').onSnapshot((snapshot) => {
     //insertHtml("#main-content", response);
     
     snapshot.docs.forEach(doc => {
@@ -156,7 +156,7 @@ db.collection('brands').orderBy('serial').onSnapshot((snapshot) => {
 
 // Show ALL Products from firestore
 var number = 1; // is used for image & description combination
-db.collection('products').orderBy('name').onSnapshot((snapshot) => {
+db.collection('products').orderBy('serial').onSnapshot((snapshot) => {
 
     //insertHtml("#main-content", response);
     snapshot.docs.forEach(doc => {
