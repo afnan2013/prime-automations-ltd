@@ -354,23 +354,18 @@ canvas {
   }
 
 #clientSection .container .carousel-inner h3{
-  margin-bottom: 20px;
-  /*background: #ABFFB7;*/
+  font-style: italic;
+  margin-bottom: 60px;
+  font-size: 28px;
 }
-
-#clientSection .container .carousel-inner p{
-  margin-bottom: 80px;
-  /*background: #ABFFB7;*/
-}
-
-#clientSection .container #carousel_div .item{
-  /*padding-bottom: 150px;*/
-}
-
 
 
 .carousel-caption {
   color: #145629;
+}
+
+.carousel-control{
+  opacity: 0;
 }
 
 /*#clientSection .container .row .clientDetails{
@@ -485,8 +480,9 @@ canvas {
   z-index: 1000;
   border-radius: 5px; }
   #scrollUp:hover {
-    background: #ffffff; ;
-    color: #163A1A; }
+  background: #ffffff; ;
+  color: #163A1A; 
+}
  
 /* END FOOTER */
 
@@ -610,6 +606,11 @@ canvas {
     font-size: 0.9em;
   }
 
+  #clientSection .container .carousel-inner h3{
+    margin-bottom: 20px;
+    font-size: 26px;
+  }
+
   #contactSection .container .row #contact_div {
     padding: 65px 30px;
   }
@@ -617,6 +618,7 @@ canvas {
 
 /********** Small devices only **********/
 @media (min-width: 768px) and (max-width: 991px) {
+      
 
   #sitelogo{
     margin-top: -75px;
@@ -719,6 +721,11 @@ canvas {
     font-size: 0.85em;
   }
 
+  #clientSection .container .carousel-inner h3{
+    margin-bottom: 5px;
+    font-size: 20px;
+  }
+
   #contactSection .container .row #contact_div {
     padding: 40px 50px;
   }
@@ -816,10 +823,13 @@ canvas {
     background-color: #0C2B25;
     /*border: 2px solid #fff;*/
     color: white;
-    margin: 4px 0px;
+    margin: 4px 10px;
     padding: 10px;
   }
   
+  #call-btn .glyphicon{
+    margin-right: 10px;
+  }
 
   .sectionTitle { 
     padding: 0px;
@@ -885,6 +895,11 @@ canvas {
 
   #serviceSection .container .row .column img {
     padding: 0px 30px;
+  }
+
+  #clientSection .container .carousel-inner h3{
+    margin-bottom: 0px;
+    font-size: 2.7vw;
   }
 
   /*#clientSection .container #carousel_div .carousel-caption {
@@ -1036,6 +1051,14 @@ canvas {
     font-size: 5vw;
   }
 
+  #clientSection .container .carousel-inner img{
+    height: 220px;
+  }
+
+  #clientSection .container .carousel-inner h3{
+    margin-bottom: 10px;
+    font-size: 3.5vw;
+  }
 
   #contactSection .container .row #contact_div {
     padding: 40px 30px;
@@ -1044,6 +1067,7 @@ canvas {
   #map-tile iframe {
     height: 200px;
   }  
+
 
   #contactSection .row h1 {
     /*font-weight: bold;*/
@@ -1106,7 +1130,7 @@ canvas {
 
   .count-particles {
     top: 12%;
-    font-size: 28px;
+    font-size: 30px;
     margin-left: -130px;
     font-weight: bold;
     letter-spacing: 3.2px;
