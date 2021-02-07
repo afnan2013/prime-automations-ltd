@@ -62,7 +62,7 @@ db.collection('settings').onSnapshot((snapshot) => {
                                     + title_section +'</p></span>');
         
         // Show Banner text from firestore
-        $("#exploreSite").append(doc.data().banner);
+        $("#exploreSite").append(doc.data().banner + '<div id="mouseClick"><img src="images/click.png"></div>');
 
         // Show Email and Mobile in a Div from firestore
         var email_text = doc.data().email;

@@ -86,6 +86,11 @@ canvas {
   outline:none;
 }
 
+#mouseClick img {
+  margin-top: 15px;
+  width: 40px;
+}
+
 
 .gs_reveal {
   opacity: 0;
@@ -212,6 +217,7 @@ canvas {
   padding-right: 0px;
   padding-left: 0px;
 }
+
 
 
 #aboutSection .jumbotron h1 {
@@ -364,9 +370,11 @@ canvas {
   color: #145629;
 }
 
-.carousel-control{
+
+#clientSection .carousel-control, #clientSection .carousel-indicators{
   opacity: 0;
 }
+
 
 /*#clientSection .container .row .clientDetails{
   font-size: 1.4em;
@@ -966,6 +974,10 @@ canvas {
     /*letter-spacing: ;*/
   }
 
+  #mouseClick img {
+    margin-top: 15px;
+    width: 30px;
+  }
 
   #logo-img-mobile{
     background: url('../images/siteLogo/175x84.png') no-repeat;
@@ -1142,6 +1154,13 @@ canvas {
     margin-left: -126px;
     /*letter-spacing: ;*/
   }
+
+  
+  #mouseClick img {
+    margin-top: 15px;
+    width: 25px;
+  }
+
 
 
 }
