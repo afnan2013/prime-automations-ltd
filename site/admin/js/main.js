@@ -486,6 +486,7 @@
   };
 
   pal.deleteProduct = (productId) => {
+    console.log(productId);
     if (confirm("Are you sure to update?")) {
       db.collection('products').doc(productId).delete();
     }
@@ -733,8 +734,8 @@
     });
   };
 
-  pal.deleteProduct = (servideId) => {
-    if (confirm("Are you sure to update?")) {
+  pal.deleteService = (servideId) => {
+    if (confirm("Are you sure to delete?")) {
       db.collection('services').doc(servideId).delete();
     }
   };

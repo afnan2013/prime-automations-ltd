@@ -1,4 +1,4 @@
-$("#exploreSite").click(function() {
+$("#canvas-site").click(function() {
     $("#main-site").css("display", "block");
     $('html, body').animate({
         scrollTop: $("#header-nav").offset().top
