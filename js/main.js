@@ -75,9 +75,9 @@ db.collection('settings').onSnapshot((snapshot) => {
         $("#aboutParagraph").append(doc.data().about);
 
         // Show Video in iframe from firestore
-        $("#aboutVideo").append('<iframe width="100%" height="550px" src="'+doc.data().video
-        + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;'
-        + 'gyroscope; picture-in-picture" allowfullscreen></iframe>');
+        // $("#aboutVideo").append('<iframe width="100%" height="550px" src="'+doc.data().video
+        // + '" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;'
+        // + 'gyroscope; picture-in-picture" allowfullscreen></iframe>');
 
         // Show Address, Email, Mobile No of contact section from firestore
         $("#contact_div").append('<h1>'+doc.data().address+'</h1><h2>'
